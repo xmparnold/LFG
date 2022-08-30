@@ -24,7 +24,6 @@ public class PostController : Controller
         }
     }
 
-    // d
     // db is just a variable name, can be called anything (e.g. DATABASE, db, _db, etc)
     private DatabaseContext _context;
      
