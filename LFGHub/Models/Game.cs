@@ -14,12 +14,15 @@ public class Game
     [MaxLength(75, ErrorMessage ="must be 75 characters or less")]
     public string Name { get; set; }
 
-    [Required]
+    [Required(ErrorMessage ="is required")]
     public bool CrossPlatform { get; set; }
     
     // 0 = PC, 1 = PS4, 2 = Xbox One, 3 = PS5, 4 = PS3, 5 = Xbox 360
-    [Required]
+    [Required(ErrorMessage ="is required")]
     public int Platform { get; set; }
+
+    [Required(ErrorMessage ="is required")]
+    public bool Approved { get; set; }
 
     public List<Post> Posts { get; set; }
 

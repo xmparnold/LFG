@@ -22,6 +22,9 @@ public class GameActivity
     [GreaterThan0]
     public int MinPlayers { get; set; }
 
+    [Required(ErrorMessage ="is required")]
+    public bool Approved { get; set; }
+
 
     public int GameId { get; set; }
     public Game? Game { get; set; }

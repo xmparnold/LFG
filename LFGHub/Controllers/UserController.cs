@@ -4,7 +4,8 @@ using LFGHub.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace LoginRegistration.Controllers;
+
+namespace LFGHub.Controllers;
 
 public class UserController : Controller
 {
