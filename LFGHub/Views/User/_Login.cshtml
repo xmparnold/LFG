@@ -1,8 +1,8 @@
 @model LoginUser
 
-<h3>Login</h3>
+@* <h3>Login</h3>
 
-<div class="container rounded bg-dark p-3">
+<div class="container shadow rounded bg-dark p-3">
     <form asp-controller="User" asp-action="Login" method="POST">
 
         <div class="form-group">
@@ -24,4 +24,35 @@
         </div>
 
     </form>
+</div> *@
+
+
+
+<div class="card bg-dark">
+  <div class="card-header bg-gradient">
+    Login
+  </div>
+  <div class="card-body">
+    <form asp-controller="User" asp-action="Login" method="POST">
+
+        <div class="form-group">
+            <label asp-for="LoginEmail"></label>
+            <span asp-validation-for="LoginEmail"
+            class="text-danger"></span>
+            <input asp-for="LoginEmail" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="LoginPassword"></label>
+            <span asp-validation-for="LoginPassword"
+            class="text-danger"></span>
+            <input asp-for="LoginPassword" class="form-control">
+        </div>
+
+        <div class="form-group pt-3">
+            <button class="btn btn-primary">Login</button>
+        </div>
+
+    </form>
+  </div>
 </div>
