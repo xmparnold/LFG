@@ -1,0 +1,50 @@
+@model List<Post>
+
+<h1>LFG Posts</h1>
+
+<table class="table table-dark table-hover">
+    
+</table>
+
+@foreach (Post post in Model)
+{
+    <div class="card shadow rounded mx-auto w-75 mb-3">
+        <div>
+            @if (post.GroupType == 0)
+            {
+                <h4 class="card-title text-center bg-dark text-light py-2 rounded-top">
+                    LFG for @post.Activity.Name - posted by @post.Author.Username
+                </h4>
+            }
+            else
+            {
+                <h4 class="card-title text-center bg-dark text-light py-2 rounded-top">
+                    LFM for @post.Activity.Name - posted by @post.Author.Username - @post.PlayersNeeded more players needed
+                </h4>
+            }
+        </div>
+        
+
+        <div class="card-body">
+            <p class="card-text">@post.Description</p>
+            <ul>
+                @foreach (GroupMember player in post.GroupPlayers)
+                {
+                    <li>@player.User.Username</li>
+                }
+            </ul>
+            <div>
+                @if (post.MicRequired == true)
+                {
+                    <p class="card-text">Mic Required</p>
+                }
+                else
+                {
+                    <p class="card-text">Mic Not Required</p>
+                }
+            </div>
+            <small class="text-muted">Posted on: @post.CreatedAt</small>
+        </div>
+
+    </div>
+}

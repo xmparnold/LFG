@@ -45,6 +45,7 @@ public class PostController : Controller
         .Include(p => p.Author)
         .Include(p => p.GroupPlayers)
         .ThenInclude(groupplayer => groupplayer.User)
+        .Include(p => p.Activity)
         .ToList();
         return View("Dashboard", allPosts);
     }
@@ -174,7 +175,7 @@ public class PostController : Controller
         dbPost.MinLevel = updatedPost.MinLevel;
         dbPost.MicRequired = updatedPost.MicRequired;
         dbPost.Description = updatedPost.Description;
-        dbPost.GameId = updatedPost.GameId;
+        // dbPost.GameId = updatedPost.GameId;
         dbPost.ActivityId = updatedPost.ActivityId;
         dbPost.UpdatedAt = DateTime.Now;
         _context.Posts.Update(dbPost);

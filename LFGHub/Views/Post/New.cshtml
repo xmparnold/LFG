@@ -1,0 +1,72 @@
+@model Post
+
+
+<div class="container w-75 mx-auto">
+    <h2 class="text-center">New Post</h2>
+
+    <form class="shadow p-3 rounded" asp-controller="Post" asp-action="Create" method="POST">
+        <div class="mb-3">
+            <label asp-for="Title"></label>
+            <span asp-validation-for="Title" class="text-danger font-weight-bold"></span>
+            <input class="form-control" asp-for="Title">
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="PlayersOnTeam"></label>
+            <span asp-validation-for="PlayersOnTeam" class="text-danger font-weight-bold"></span>
+            <input class="form-control" asp-for="PlayersOnTeam">
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Platform"></label>
+            <span asp-validation-for="Platform" class="text-danger font-weight-bold"></span>
+            <select class="form-control" asp-for="Platform">
+                <option value=0>PC</option>
+                <option value=1>PS4</option>
+                <option value=2>Xbox One</option>
+                <option value=3>PS5</option>
+                <option value=4>PS3</option>
+                <option value=5>Xbox 360</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Language"></label>
+            <span asp-validation-for="Language" class="text-danger font-weight-bold"></span>
+            <input class="form-control" asp-for="Language">
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="GroupType"></label>
+            <span asp-validation-for="GroupType" class="text-danger font-weight-bold"></span>
+            <select class="form-control" asp-for="GroupType">
+                <option value=0>LFG</option>
+                <option value=1>LFM</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="MinLevel"></label>
+            <span asp-validation-for="MinLevel" class="text-danger font-weight-bold"></span>
+            <input class="form-control" asp-for="MinLevel">
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="MicRequired"></label>
+            <span asp-validation-for="MicRequired" class="text-danger font-weight-bold"></span>
+            <select class="form-control" asp-for="MicRequired">
+                <option value="true">Required</option>
+                <option value="false">Not Required</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description"></label>
+            <span asp-validation-for="Description" class="text-danger font-weight-bold"></span>
+            <textarea class="form-control" asp-for="Description"></textarea>
+        </div>
+
+        <button class="btn btn-success">Submit</button>
+    </form>
+
+</div>

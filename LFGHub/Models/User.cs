@@ -11,14 +11,21 @@ public class User {
 
     [Required(ErrorMessage ="is required.")]
     [MinLength(2, ErrorMessage ="must be at least 2 characters.")]
+    [MaxLength(25, ErrorMessage ="must be 25 characters or less")]
     [Display(Name = "First Name")]
     public string FirstName { get; set; }
 
 
     [Required(ErrorMessage ="is required.")]
     [MinLength(2, ErrorMessage ="must be at least 2 characters.")]
+    [MaxLength(25, ErrorMessage ="must be 25 characters or less")]
     [Display(Name = "Last Name")]
     public string LastName { get; set; }
+
+    [Required(ErrorMessage ="is required.")]
+    [MinLength(2, ErrorMessage ="must be at least 2 characters.")]
+    [MaxLength(26, ErrorMessage ="must be 26 characters or less")]
+    public string Username { get; set; }
 
 
     [Required(ErrorMessage ="is required.")]
@@ -45,6 +52,8 @@ public class User {
 
     public List<Post> PostsCreated { get; set; }
     public List<GroupMember> GroupsIn { get; set; }
+    public List<FriendRequest> FriendRequests { get; set; }
+    public List<Friend> Friends { get; set; }
 
 
     public string FullName() {

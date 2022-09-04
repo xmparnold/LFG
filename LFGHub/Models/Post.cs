@@ -61,8 +61,9 @@ public class Post
     public int UserId { get; set; }
     public User? Author { get; set; }
     public List<GroupMember> GroupPlayers { get; set; }
-    public int GameId { get; set; }
-    public Game? Game { get; set; }
+    public List<JoinRequest> JoinRequests { get; set; }
+    // public int GameId { get; set; }
+    // public Game? Game { get; set; }
     public int ActivityId { get; set; }
     public GameActivity Activity { get; set; }
     

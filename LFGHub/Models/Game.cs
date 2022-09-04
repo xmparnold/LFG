@@ -23,6 +23,10 @@ public class Game
 
     [Required(ErrorMessage ="is required")]
     public bool Approved { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.Now;
+
+    public DateTime UpdatedAt { get; set; } = DateTime.Now;
+
 
     public List<Post> Posts { get; set; }
 
