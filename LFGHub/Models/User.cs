@@ -52,8 +52,8 @@ public class User {
 
     public List<Post> PostsCreated { get; set; }
     public List<GroupMember> GroupsIn { get; set; }
-    public List<FriendRequest> FriendRequests { get; set; }
-    public List<Friend> Friends { get; set; }
+    // public List<FriendRequest> FriendRequests { get; set; }
+    // public List<Friend> Friends { get; set; }
 
 
     public string FullName() {

@@ -39,20 +39,11 @@ public class UserController : Controller
     {
         if (loggedIn)
         {
-            return RedirectToAction("Success");
+            return RedirectToAction("Dashboard", "Post");
         }
         return View("Index");
     }
 
-    [HttpGet("/success")]
-    public IActionResult Success()
-    {
-        if (loggedIn)
-        {
-            return View("Success");
-        }
-        return Index();
-    }
 
     [HttpPost("/register")]
     public IActionResult Register(User newUser)
@@ -80,7 +71,7 @@ public class UserController : Controller
         // now that we've run SaveChanges() we have access to the UserId from our SQL db
         HttpContext.Session.SetInt32("UUID", newUser.UserId);
         HttpContext.Session.SetString("Name", newUser.FullName());
-        return RedirectToAction("Success");
+        return RedirectToAction("Dashboard", "Post");
 
     }
 
@@ -114,7 +105,7 @@ public class UserController : Controller
         // no returns, therefore no errors
         HttpContext.Session.SetInt32("UUID", dbUser.UserId);
         HttpContext.Session.SetString("Name", dbUser.FullName());
-        return RedirectToAction("Success");
+        return RedirectToAction("Dashboard", "Post");
     }
 
     [HttpPost("/logout")]

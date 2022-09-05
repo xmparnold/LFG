@@ -6,6 +6,7 @@ namespace LFGHub.Models;
 
 public class Friend
 {
+    [Key]
     public int FriendId { get; set; }
     public int UserId1 { get; set; }
     public User? User1 { get; set; }

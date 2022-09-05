@@ -9,6 +9,7 @@ public class JoinRequest
     [Key]
     public int JoinRequestId { get; set; }
 
+    [Required]
     public bool Approved { get; set; }
 
     public DateTime CreatedAt { get; set; }

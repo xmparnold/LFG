@@ -33,7 +33,7 @@ public class PostController : Controller
         _context = context;
     }
 
-    [HttpGet("/lfg/dashboard")]
+    [HttpGet("/dashboard")]
     public IActionResult Dashboard()
     {
         if (!loggedIn)
@@ -176,7 +176,7 @@ public class PostController : Controller
         dbPost.MicRequired = updatedPost.MicRequired;
         dbPost.Description = updatedPost.Description;
         // dbPost.GameId = updatedPost.GameId;
-        dbPost.ActivityId = updatedPost.ActivityId;
+        dbPost.GameActivityId = updatedPost.GameActivityId;
         dbPost.UpdatedAt = DateTime.Now;
         _context.Posts.Update(dbPost);
         _context.SaveChanges();

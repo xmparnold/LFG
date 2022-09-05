@@ -49,6 +49,7 @@ public class Post
     [Display(Name ="Mic Required")]
     public bool MicRequired { get; set; }
 
+    [Required(ErrorMessage ="is required")]
     [MinLength(10, ErrorMessage ="must be at least 10 characters")]
     [MaxLength(500, ErrorMessage ="must be 500 characters or less")]
     public string? Description { get; set; }
@@ -61,10 +62,10 @@ public class Post
     public int UserId { get; set; }
     public User? Author { get; set; }
     public List<GroupMember> GroupPlayers { get; set; }
-    public List<JoinRequest> JoinRequests { get; set; }
+    // public List<JoinRequest> JoinRequests { get; set; }
     // public int GameId { get; set; }
     // public Game? Game { get; set; }
-    public int ActivityId { get; set; }
+    public int GameActivityId { get; set; }
     public GameActivity Activity { get; set; }
     
 }

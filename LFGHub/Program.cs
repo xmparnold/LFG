@@ -17,6 +17,7 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
 app.UseSession();
+app.UseStaticFiles();
 
 if (!app.Environment.IsDevelopment())
 {
