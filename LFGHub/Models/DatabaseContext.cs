@@ -15,5 +15,6 @@ public class DatabaseContext : DbContext
     public DbSet<GameActivity> GameActivities { get; set; }
     public DbSet<Post> Posts { get; set; }
     public DbSet<GroupMember> GroupMembers { get; set; }
+    public DbSet<NewsPost> NewsPosts { get; set; }
     
 }

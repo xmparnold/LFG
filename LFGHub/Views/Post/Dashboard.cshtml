@@ -1,50 +1,112 @@
-@model List<Post>
+@model List<NewsPost>
 
-<h1>LFG Posts</h1>
+<div id="carouselExampleFade" class="carousel slide carousel-fade mb-4 rounded" data-bs-ride="carousel">
+  <div class="carousel-inner rounded shadow">
+    <div class="carousel-item active">
+      <img src="~/assets/caras1.png" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>LFGHub Grand Opening</h5>
+        <p>LFGHub is now open for public use! </p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="~/assets/caras2.png" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>New Activities Added!</h5>
+        <p>We have added more in game activities to the list of activities you can now post an LFG or LFM for. </p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="~/assets/caras3.png" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Help LFGHub Stay Open!</h5>
+        <p>LFGHub costs money to host and all donations are greatly appreciated! They help us continue to bring new features! </p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<div class="card-group shadow">
+  <div class="card bg-dark">
+    <img src="~/assets/dashimage1.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card bg-dark">
+    <img src="~/assets/dashimage2.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card bg-dark">
+    <img src="~/assets/dashimage3.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+</div>
 
 <table class="table table-dark table-hover">
     
 </table>
 
-@foreach (Post post in Model)
-{
-    <div class="card shadow rounded mx-auto w-75 mb-3">
-        <div>
-            @if (post.GroupType == 0)
-            {
-                <h4 class="card-title text-center bg-dark text-light py-2 rounded-top">
-                    LFG for @post.Activity.Name - posted by @post.Author.Username
-                </h4>
-            }
-            else
-            {
-                <h4 class="card-title text-center bg-dark text-light py-2 rounded-top">
-                    LFM for @post.Activity.Name - posted by @post.Author.Username - @post.PlayersNeeded more players needed
-                </h4>
-            }
-        </div>
-        
-
-        <div class="card-body">
-            <p class="card-text">@post.Description</p>
-            <ul>
-                @foreach (GroupMember player in post.GroupPlayers)
-                {
-                    <li>@player.User.Username</li>
-                }
-            </ul>
-            <div>
-                @if (post.MicRequired == true)
-                {
-                    <p class="card-text">Mic Required</p>
-                }
-                else
-                {
-                    <p class="card-text">Mic Not Required</p>
-                }
+<div class="card mb-3 p-3 bg-dark shadow">
+  @foreach (NewsPost post in Model)
+  {
+      <div class="card shadow rounded bg-dark mx-auto mb-3 p-2">
+          <div>
+            <h4 class="card-title bg-gradient text-center bg-dark text-light py-2 rounded-top">
+                @post.Title
+            </h4>
+          </div>
+          <div class="card-body">
+            <div class="d-flex p-2">
+              <div class="row allign-items-center">
+                <div class="col-3 bg-light p-3 bg-dark">
+                  <div style="height: 150px;">
+                    <img src="@post.SmallImageUrl" class="img-fluid mh-100" alt="">
+                  </div>
+                </div>
+                <div class="col-9 bg-light p-3 bg-dark">
+                  <p class="card-text">@post.Subtitle</p>
+                </div>
+              </div>
             </div>
-            <small class="text-muted">Posted on: @post.CreatedAt</small>
-        </div>
+              <small class="text-muted">Last updated: @post.UpdatedAt</small>
+              <a class="text-muted" asp-area="" asp-controller="NewsPost" asp-action="ViewNewsPost" asp-route-newsPostId="@post.NewsPostId">View</a>
+          </div>
 
+      </div>
+  }
+</div>
+
+
+<div class="card mb-3 bg-dark shadow" style="max-width: 1000px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="..." class="img-fluid rounded-start" alt="...">
     </div>
-}
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -70,7 +70,6 @@ public class UserController : Controller
 
         // now that we've run SaveChanges() we have access to the UserId from our SQL db
         HttpContext.Session.SetInt32("UUID", newUser.UserId);
-        HttpContext.Session.SetString("Name", newUser.FullName());
         return RedirectToAction("Dashboard", "Post");
 
     }

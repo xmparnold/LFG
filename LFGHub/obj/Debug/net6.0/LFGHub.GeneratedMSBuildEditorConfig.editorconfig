@@ -15,12 +15,36 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Matt\Desktop\CodingDojo\CSharp\Project\LFG\LFGHub
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Matt/Desktop/CodingDojo/CSharp/Project/LFG/LFGHub/Views/GameActivity/New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZUFjdGl2aXR5XE5ldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Matt/Desktop/CodingDojo/CSharp/Project/LFG/LFGHub/Views/GameActivity/Suggestions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZUFjdGl2aXR5XFN1Z2dlc3Rpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Matt/Desktop/CodingDojo/CSharp/Project/LFG/LFGHub/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Matt/Desktop/CodingDojo/CSharp/Project/LFG/LFGHub/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Matt/Desktop/CodingDojo/CSharp/Project/LFG/LFGHub/Views/NewsPost/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1Bvc3RcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Matt/Desktop/CodingDojo/CSharp/Project/LFG/LFGHub/Views/NewsPost/New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1Bvc3RcTmV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Matt/Desktop/CodingDojo/CSharp/Project/LFG/LFGHub/Views/NewsPost/View.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1Bvc3RcVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Matt/Desktop/CodingDojo/CSharp/Project/LFG/LFGHub/Views/Post/All.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxBbGwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Matt/Desktop/CodingDojo/CSharp/Project/LFG/LFGHub/Views/Post/Dashboard.cshtml]

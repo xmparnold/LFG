@@ -1,0 +1,24 @@
+@model NewsPost
+
+<div class="card mb-3 bg-dark shadow">
+    <h1 class="display-3 text-center">@Model.Title</h1>
+    <div class="container mb-3">
+
+        <div class="clearfix">
+            <img src="@Model.ImageUrl" class="col-md-6 float-md-end mb-3 ms-md-3" alt="">
+
+            <p class="">
+            @Model.Text
+            </p>
+
+
+        </div>
+        <small class="text-muted">Last updated: @Model.UpdatedAt</small>
+        @{
+            if (Context.Session.GetInt32("UUID") == 1)
+            {
+                <a class="nav-link text-light" asp-area="" asp-controller="NewsPost" asp-action="Edit" asp-route-newsPostId="@Model.NewsPostId">Edit this post</a>
+            }
+        }
+    </div>
+    </div>

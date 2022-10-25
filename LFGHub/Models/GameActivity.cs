@@ -7,7 +7,7 @@ namespace LFGHub.Models;
 public class GameActivity
 {
     [Key]
-    public int ActivityId { get; set; }
+    public int GameActivityId { get; set; }
 
     [Required(ErrorMessage ="is required")]
     [MinLength(2, ErrorMessage ="must be at least 2 characters")]
@@ -32,5 +32,7 @@ public class GameActivity
 
     // public int GameId { get; set; }
     // public Game? Game { get; set; }
-    public List<Post> Posts { get; set; }
+    public List<Post> Posts { get; set; } = new List<Post>();
+    public int UserId { get; set; }
+    public User? SuggestedBy { get; set; }
 }

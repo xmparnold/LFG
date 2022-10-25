@@ -41,13 +41,28 @@ public class PostController : Controller
             return RedirectToAction("Index", "User");
         }
 
+        
+
+        List<NewsPost> allNews = _context.NewsPosts.ToList();
+        allNews.Sort(delegate(NewsPost np1, NewsPost np2) { return DateTime.Compare(np2.CreatedAt, np1.CreatedAt); });
+        return View("Dashboard", allNews);
+    }
+
+    [HttpGet("/lfg/posts/all")]
+    public IActionResult All()
+    {
+        if (!loggedIn)
+        {
+            return RedirectToAction("Index", "User");
+        }
+
         List<Post> allPosts = _context.Posts
         .Include(p => p.Author)
         .Include(p => p.GroupPlayers)
         .ThenInclude(groupplayer => groupplayer.User)
-        .Include(p => p.Activity)
         .ToList();
-        return View("Dashboard", allPosts);
+        allPosts.Sort(delegate(Post p1, Post p2) { return DateTime.Compare(p2.CreatedAt, p1.CreatedAt); });
+        return View("All", allPosts);
     }
 
     [HttpGet("/lfg/posts/new")]
@@ -58,6 +73,9 @@ public class PostController : Controller
         {
             return RedirectToAction("Index", "User");
         }
+
+        List<GameActivity> allActivities = _context.GameActivities.Where(ga => ga.Approved == true).ToList();
+        ViewBag.allActivities = allActivities;
 
         return View("New");
     }
@@ -70,15 +88,16 @@ public class PostController : Controller
             return RedirectToAction("Index", "User");
         }
 
+        if (uid != null)
+        {
+            newPost.UserId = (int)uid;
+        }
+
         if (ModelState.IsValid == false)
         {
             return New();
         }
 
-        if (uid != null)
-        {
-            newPost.UserId = (int)uid;
-        }
 
         _context.Posts.Add(newPost);
         _context.SaveChanges();
@@ -168,15 +187,14 @@ public class PostController : Controller
         dbPost.Title = updatedPost.Title;
         dbPost.PlayersOnTeam = updatedPost.PlayersOnTeam;
         dbPost.MaxPlayersOnTeam = updatedPost.MaxPlayersOnTeam;
-        dbPost.PlayersNeeded = updatedPost.PlayersNeeded;
+        // dbPost.PlayersNeeded = updatedPost.PlayersNeeded;
         dbPost.Platform = updatedPost.Platform;
         dbPost.Language = updatedPost.Language;
         dbPost.GroupType = updatedPost.GroupType;
         dbPost.MinLevel = updatedPost.MinLevel;
-        dbPost.MicRequired = updatedPost.MicRequired;
         dbPost.Description = updatedPost.Description;
         // dbPost.GameId = updatedPost.GameId;
-        dbPost.GameActivityId = updatedPost.GameActivityId;
+        dbPost.GameActivity = updatedPost.GameActivity;
         dbPost.UpdatedAt = DateTime.Now;
         _context.Posts.Update(dbPost);
         _context.SaveChanges();

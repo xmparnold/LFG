@@ -21,7 +21,7 @@ namespace LFGHub.Migrations
 
             modelBuilder.Entity("LFGHub.Models.GameActivity", b =>
                 {
-                    b.Property<int>("ActivityId")
+                    b.Property<int>("GameActivityId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -45,9 +45,14 @@ namespace LFGHub.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.HasKey("ActivityId");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
-                    b.ToTable("Activities");
+                    b.HasKey("GameActivityId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("GameActivities");
                 });
 
             modelBuilder.Entity("LFGHub.Models.GroupMember", b =>
@@ -71,6 +76,45 @@ namespace LFGHub.Migrations
                     b.ToTable("GroupMembers");
                 });
 
+            modelBuilder.Entity("LFGHub.Models.NewsPost", b =>
+                {
+                    b.Property<int>("NewsPostId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("SmallImageUrl")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Subtitle")
+                        .HasMaxLength(400)
+                        .HasColumnType("varchar(400)");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasMaxLength(5000)
+                        .HasColumnType("varchar(5000)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("varchar(40)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("NewsPostId");
+
+                    b.ToTable("NewsPosts");
+                });
+
             modelBuilder.Entity("LFGHub.Models.Post", b =>
                 {
                     b.Property<int>("PostId")
@@ -85,11 +129,16 @@ namespace LFGHub.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
 
-                    b.Property<int>("GameActivityId")
+                    b.Property<string>("GameActivity")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("GameActivityId")
                         .HasColumnType("int");
 
-                    b.Property<int>("GroupType")
-                        .HasColumnType("int");
+                    b.Property<string>("GroupType")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Language")
                         .IsRequired()
@@ -98,17 +147,12 @@ namespace LFGHub.Migrations
                     b.Property<int>("MaxPlayersOnTeam")
                         .HasColumnType("int");
 
-                    b.Property<bool>("MicRequired")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<int>("MinLevel")
                         .HasColumnType("int");
 
-                    b.Property<int>("Platform")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PlayersNeeded")
-                        .HasColumnType("int");
+                    b.Property<string>("Platform")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<int>("PlayersOnTeam")
                         .HasColumnType("int");
@@ -173,6 +217,17 @@ namespace LFGHub.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("LFGHub.Models.GameActivity", b =>
+                {
+                    b.HasOne("LFGHub.Models.User", "SuggestedBy")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SuggestedBy");
+                });
+
             modelBuilder.Entity("LFGHub.Models.GroupMember", b =>
                 {
                     b.HasOne("LFGHub.Models.Post", "Post")
@@ -194,19 +249,15 @@ namespace LFGHub.Migrations
 
             modelBuilder.Entity("LFGHub.Models.Post", b =>
                 {
-                    b.HasOne("LFGHub.Models.GameActivity", "Activity")
+                    b.HasOne("LFGHub.Models.GameActivity", null)
                         .WithMany("Posts")
-                        .HasForeignKey("GameActivityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("GameActivityId");
 
                     b.HasOne("LFGHub.Models.User", "Author")
                         .WithMany("PostsCreated")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Activity");
 
                     b.Navigation("Author");
                 });

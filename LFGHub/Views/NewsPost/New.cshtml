@@ -1,0 +1,41 @@
+@model NewsPost
+
+
+<div class="container w-75 mx-auto">
+    <h2 class="text-center">New Post</h2>
+
+    <form class="shadow p-3 rounded" asp-controller="NewsPost" asp-action="Create" method="POST">
+        <div class="mb-3">
+            <label asp-for="Title"></label>
+            <span asp-validation-for="Title" class="text-danger font-weight-bold"></span>
+            <input class="form-control" asp-for="Title">
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ImageUrl"></label>
+            <span asp-validation-for="ImageUrl" class="text-danger font-weight-bold"></span>
+            <input class="form-control" asp-for="ImageUrl">
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="SmallImageUrl"></label>
+            <span asp-validation-for="SmallImageUrl" class="text-danger font-weight-bold"></span>
+            <input class="form-control" asp-for="SmallImageUrl">
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Subtitle"></label>
+            <span asp-validation-for="Subtitle" class="text-danger font-weight-bold"></span>
+            <textarea class="form-control" asp-for="Subtitle"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Text"></label>
+            <span asp-validation-for="Text" class="text-danger font-weight-bold"></span>
+            <textarea class="form-control" asp-for="Text"></textarea>
+        </div>
+
+        <button class="btn btn-success">Submit</button>
+    </form>
+
+</div>

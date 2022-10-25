@@ -50,11 +50,8 @@ public class User {
     public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
 
-    public List<Post> PostsCreated { get; set; }
-    public List<GroupMember> GroupsIn { get; set; }
-    // public List<FriendRequest> FriendRequests { get; set; }
-    // public List<Friend> Friends { get; set; }
-
+    public List<Post> PostsCreated { get; set; } = new List<Post>();
+    public List<GroupMember> GroupsIn { get; set; } = new List<GroupMember>();
 
     public string FullName() {
         return FirstName + " " + LastName;

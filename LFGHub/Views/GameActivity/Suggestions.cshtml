@@ -1,0 +1,45 @@
+@model List<GameActivity>
+
+<div class="card bg-dark">
+  <h5 class="card-header bg-gradient text-center">Game Activitiy Suggestions</h5>
+  <div class="card-body">
+    <h5 class="card-title">Approved Activities</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <ul class="list-group">
+        @{
+            foreach (GameActivity activity in Model)
+            {
+                if (activity.Approved == true)
+                {
+                    <li class="list-group-item list-group-item-dark">
+                        @activity.Name - (Max: @activity.MaxPlayers  - Min: @activity.MinPlayers - Suggested by: @activity.SuggestedBy.Username) - 
+                        <form asp-controller="GameActivity" asp-action="Approve" asp-route-gameActivityId="@activity.GameActivityId" method="POST">
+                            <button class="btn btn-danger">Remove</button>
+                        </form>
+                    </li>
+                }
+            }
+        }
+    </ul>
+
+
+    <h5 class="card-title">Pending Activities</h5>
+    <ul class="list-group bg-dark">
+        @{
+            foreach (GameActivity activity in Model)
+            {
+                if (activity.Approved == false)
+                {
+                    <li class="list-group-item list-group-item-dark">
+                        @activity.Name - (Max: @activity.MaxPlayers  - Min: @activity.MinPlayers - Suggested by: @activity.SuggestedBy.Username) - 
+                        <form asp-controller="GameActivity" asp-action="Approve" asp-route-gameActivityId="@activity.GameActivityId" method="POST">
+                            <button class="btn btn-success">Approve</button>
+                        </form>
+                    </li>
+                }
+            }
+        }
+    </ul>
+
+  </div>
+</div>
