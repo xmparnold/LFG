@@ -107,6 +107,36 @@ public class UserController : Controller
         return RedirectToAction("Dashboard", "Post");
     }
 
+    [HttpGet("/login/guest")]
+    public IActionResult LoginGuest()
+    {
+        User? guestUser = db.Users.FirstOrDefault(user => user.UserId == 2);
+
+        if (guestUser == null)
+        {
+            return Index();
+        }
+
+        HttpContext.Session.SetInt32("UUID", guestUser.UserId);
+        HttpContext.Session.SetString("Name", guestUser.FullName());
+        return RedirectToAction("Dashboard", "Post");
+    }
+
+    [HttpGet("/login/admin")]
+    public IActionResult LoginAdmin()
+    {
+        User? adminUser = db.Users.FirstOrDefault(user => user.UserId == 1);
+
+       if (adminUser == null)
+       {
+        return Index();
+       }
+
+       HttpContext.Session.SetInt32("UUID", adminUser.UserId);
+       HttpContext.Session.SetString("Name", adminUser.FullName());
+       return RedirectToAction("Dashboard", "Post");
+    }
+
     [HttpPost("/logout")]
     public IActionResult Logout()
     {
